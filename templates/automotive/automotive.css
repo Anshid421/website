@@ -782,7 +782,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.6fr 1fr 1fr  1fr 0.2fr;
   gap: 40px;
 }
 .footer-blurb {
@@ -1053,3 +1053,30 @@ button, input, select, textarea { font: inherit; color: inherit; }
   }
 }
 
+/* map */
+
+.map-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 200px;
+    display: block;
+    border: 0;
+  }
+
+  @media (max-width: 480px) {
+    .map-container {
+      max-width: 100%;
+    }
+
+    .map-container iframe {
+      height: 160px;
+    }
+
+  }
