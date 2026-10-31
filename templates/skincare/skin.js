@@ -32,20 +32,5 @@
     });
   }
 
-  const showToast = (productName) => {
-    if (!toast) return;
-    toast.textContent = `${productName} added to your routine.`;
-    toast.classList.add('is-visible');
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => {
-      toast.classList.remove('is-visible');
-    }, 2600);
-  };
-
-  document.querySelectorAll('.add-button').forEach((button) => {
-    button.addEventListener('click', () => {
-      const productName = button.dataset.product || 'Product';
-      showToast(productName);
-    });
-  });
+  
 })();
