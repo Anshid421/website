@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Demo Temp - a simple cafe website template. Demo content only.">
+  <title>Demo Temp 5</title>
+  <link rel="stylesheet" href="cafe.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="container navbar" aria-label="Main">
+    <a class="logo" href="#top">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span></span>
+    </a>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+
+    <ul class="menu" id="nav-links">
+      <li><a class="nav-link" href="#about">About</a></li>
+      <li><a class="nav-link" href="#menu">Menu</a></li>
+      <li><a class="nav-link" href="#gallery">Gallery</a></li>
+      <li><a class="nav-link" href="#visit">Visit</a></li>
+      <li><a class="btn btn-primary btn-small" href="#visit">Book</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+
+  <section class="container hero">
+    <div class="hero-text">
+      <p class="tag">Coffee · Bakery · Brunch</p>
+      <h1>A calm corner for good coffee</h1>
+      <p class="lead">Freshly roasted beans, warm bakes and a quiet place to sit. This is demo content, so change the text to your own.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#menu">See the menu</a>
+        <a class="btn btn-ghost" href="#visit">Find us</a>
+      </div>
+    </div>
+    <div class="ph hero-photo" role="img" aria-label="Placeholder for a cafe photo"> </div>
+  </section>
+
+ 
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">About us</p>
+        <h2>Simple food, made every day.</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ph" role="img" aria-label="Placeholder photo 1">Photo 1</div>
+          <h3>Roasted in small batches</h3>
+          <p>We roast every week, so every cup tastes fresh.</p>
+        </article>
+        <article class="card">
+          <div class="ph" role="img" aria-label="Placeholder photo 2">Photo 2</div>
+          <h3>Baked every morning</h3>
+          <p>Croissants, scones and bread come out of the oven before we open.</p>
+        </article>
+        <article class="card">
+          <div class="ph" role="img" aria-label="Placeholder photo 3">Photo 3</div>
+          <h3>A quiet place to sit</h3>
+          <p>Calm corners, plenty of light and room to work or talk.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Menu</p>
+        <h2>Today's favourites</h2>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-col">
+          <h3>Coffee</h3>
+          <ul>
+            <li><span>Espresso</span><span>$99</span></li>
+            <li><span>Flat white</span><span>$99</span></li>
+            <li><span>Cappuccino</span><span>$99</span></li>
+            <li><span>Cold brew</span><span>$99</span></li>
+          </ul>
+        </div>
+        <div class="menu-col">
+          <h3>Tea & more</h3>
+          <ul>
+            <li><span>Masala chai</span><span>$99</span></li>
+            <li><span>Green tea</span><span>$99</span></li>
+            <li><span>Matcha latte</span><span>$99</span></li>
+            <li><span>Hot chocolate</span><span>$99</span></li>
+          </ul>
+        </div>
+        <div class="menu-col">
+          <h3>Bakery</h3>
+          <ul>
+            <li><span>Butter croissant</span><span>$99</span></li>
+            <li><span>Banana bread</span><span>$99</span></li>
+            <li><span>Cheese scone</span><span>$99</span></li>
+            <li><span>Avocado toast</span><span>$99</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery: placeholders only -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Gallery</p>
+        <h2>Inside the cafe</h2>
+      </div>
+      <div class="gallery">
+        <div class="ph" role="img" aria-label="Gallery placeholder 1">Photo 1</div>
+        <div class="ph" role="img" aria-label="Gallery placeholder 2">Photo 2</div>
+        <div class="ph" role="img" aria-label="Gallery placeholder 3">Photo 3</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit: hours and a demo booking form -->
+  <section class="section" id="visit">
+    <div class="container visit">
+      <div class="info-box">
+        <p class="kicker">Visit us</p>
+        <h3>Opening hours</h3>
+        <ul class="hours">
+          <li><span>Monday - Friday</span><span>10:00 - 10:00</span></li>
+          <li><span>Saturday</span><span>8:00 - 10:00</span></li>
+          <li><span>Sunday</span><span>8:00 - 2:00</span></li>
+        </ul>
+        <p>Nilambur<br>999999999<br>
+      </div>
+
+
+      <iframe
+        src="https://maps.google.com/maps?q=Nilambur%2C%20Kerala%2C%20India&z=13&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy">
+    </iframe>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© Suha</span>
+    <a href="../index.html">Template hub ↗</a>
+  </div>
+</footer>
+
+<!-- Floating back-to-hub button (bottom right, stays on screen while scrolling) -->
+<a class="hub-float" href="../index.html" aria-label="Back to template hub">Template hub ↗</a>
+
+<script src="cafe.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+/* =========================================================
+   1. BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0c0d10;
+  --card: #15161a;
+  --line: #2a2b31;
+  --text: #f5f5f6;
+  --muted: #a8a9af;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.6 Inter, system-ui, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   2. MOTION
+   ========================================================= */
+
+/* ---- Ambient glow behind the page ---- */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: -30%;
+  left: 50%;
+  width: 120vmax;
+  height: 120vmax;
+  translate: -50% 0;
+  background: radial-gradient(closest-side, rgba(255, 81, 72, .14), transparent);
+  pointer-events: none;
+  animation: glow 14s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { transform: translate3d(-6%, 0, 0) scale(1); }
+  to   { transform: translate3d(6%, 8%, 0) scale(1.1); }
+}
+
+/* ---- Entrance: fade in while moving up. Stagger with --d inline ---- */
+@keyframes rise {
+  /* "translate" (not "transform") so the card hover lift can still apply
+     after the entrance animation has finished */
+  from { opacity: 0; translate: 0 24px; }
+  to   { opacity: 1; translate: none; }
+}
+
+.reveal-in {
+  animation: rise 1s cubic-bezier(.22, 1, .36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+
+/* =========================================================
+   3. PAGE HEADER
+   ========================================================= */
+.hub {
+  max-width: 1100px;
+  margin: auto;
+  padding: 9vh 24px 60px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #ff5148;
+  letter-spacing: .18em;
+  font-size: .78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hub h1 {
+  font-size: clamp(2.8rem, 7vw, 5.7rem);
+  line-height: .98;
+  letter-spacing: -.06em;
+  margin: 29px 0;
+}
+.hub h1 span {
+  color: #ff5148;
+}
+
+.intro {
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.7;
+  margin: 0 0 40px;
+}
+
+
+/* =========================================================
+   4. CARDS
+   =========================================================
+   Each card sets its own accent colour inline: style="--swatch:#..." */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px 20px 26px;
+  background: var(--card);
+  overflow: hidden;
+  transition:
+    transform .55s cubic-bezier(.22, 1, .36, 1),
+    border-color .4s,
+    box-shadow .55s;
+}
+
+/* Accent line that draws across the top on hover */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--swatch);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--swatch);
+  box-shadow: 0 30px 60px -36px var(--swatch);
+}
+.card:hover::before {
+  transform: scaleX(1);
+}
+.card:focus-visible {
+  outline: 2px solid var(--swatch);
+  outline-offset: 4px;
+}
+
+.card b {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--swatch);
+  font-size: .85rem;
+  letter-spacing: .1em;
+}
+.card h2 {
+  font-size: 1.6rem;
+  margin: 8px 0 6px;
+  letter-spacing: -.02em;
+}
+.card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* "Open" link with arrow that nudges up-right on hover */
+.go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-weight: 700;
+}
+.go .arrow {
+  display: inline-block;
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+.card:hover .go .arrow {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   5. MINI PREVIEWS  (pure CSS, no external images)
+   ========================================================= */
+.preview {
+  position: relative;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+.preview span {
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -.03em;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .25);
+}
+.preview i {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0;
+}
+.card:hover .preview {
+  transform: scale(1.03);
+}
+
+/* One variant per template */
+.preview--auto {
+  background: linear-gradient(120deg, #0a0a0b 40%, #f23b33);
+}
+
+.preview--agency {
+  background: linear-gradient(120deg, #e7ebed, #15263d);
+  color: #15263d;
+}
+.preview--agency span {
+  color: #15263d;
+  text-shadow: none;
+}
+
+.preview--interior {
+  background: linear-gradient(120deg, #3a2a1c, #c9a878);
+}
+
+.preview--tech {
+  background: linear-gradient(120deg, #f5f5f4 30%, #4f7896);
+}
+.preview--tech span {
+  color: #17191d;
+  text-shadow: none;
+}
+
+
+.preview--cafe {
+    background: linear-gradient(120deg, #f7efe3 20%, #d9bf9c);
+}
+
+
+/* =========================================================
+   6. FOOTER NOTE
+   ========================================================= */
+.note {
+  margin-top: 32px;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   7. RESPONSIVE
+   ========================================================= */
+@media (max-width: 650px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .hub {
+    padding-top: 5vh;
+  }
+}
+
+/* MOBILE / TABLET SAFETY — prevent horizontal overflow and side-to-side motion. */
+@media (max-width: 1024px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  /* Keep the ambient glow static instead of drifting sideways. */
+  body::before {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+@supports not (overflow: clip) {
+  @media (max-width: 1024px) {
+    html, body { overflow-x: hidden; }
+  }
+}
+
+/* =========================================================
+   8. TEMPLATE 6 – LUXURY PINK GRADIENT
+   ========================================================= */
+
+.preview--skin {
+  background: linear-gradient(
+    125deg,
+    #fff0f5 0%,
+    #f3c1d3 30%,
+    #df91b1 65%,
+    #a95078 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Template text */
+.preview--skin span {
+  color: #54243b !important;
+  text-shadow: none;
+  font-family: Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Luxury shine effect */
+.preview--skin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 75%
+  );
+  pointer-events: none;
+}
+
+/* Card hover accent */
+.card:has(.preview--skin) {
+  --swatch: #d77b9e;
+}
